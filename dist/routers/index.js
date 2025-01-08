@@ -1,9 +1,11 @@
 import { Router } from "express";
-import listsRouter from "./lists.js";
+import bookRouter from "./books/index.js";
+import authRouter from "./auth/index.js";
 const routers = Router();
 routers.get("/test", (req, res) => {
-    res.json("Good Morning");
+    res.json("What's up. You are connected to the api.");
 });
-routers.use("/lists", listsRouter);
+routers.use("/auth", authRouter);
+routers.use("/books", bookRouter);
 export default routers;
 //# sourceMappingURL=index.js.map

@@ -13,19 +13,41 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id          Int       @id @default(autoincrement())
+  email       String    @unique
+  password    String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  profile     Profile?
+  favoriteBooks FavoriteBook[]
 }
 
-model Post {
+model Profile {
   id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+  userId    Int     @unique
+  user      User    @relation(fields: [userId], references: [id])
+  firstName String
+  lastName  String
+  bio       String?
+  avatarUrl String?
+}
+
+model Book {
+  id          Int       @id @default(autoincrement())
+  title       String
+  author      String
+  genre       String
+  publishedAt DateTime
+  favoriteBooks FavoriteBook[]
+}
+
+model FavoriteBook {
+  id     Int   @id @default(autoincrement())
+  userId Int
+  bookId Int
+  user   User  @relation(fields: [userId], references: [id])
+  book   Book  @relation(fields: [bookId], references: [id])
+
+  @@unique([userId, bookId]) // Ensure a user can't save the same book multiple times
 }

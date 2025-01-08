@@ -11,12 +11,16 @@
 	"dependencies": {
 		"@adminjs/express": "^6.1.1",
 		"@adminjs/prisma": "^5.0.3",
-		"@prisma/client": "^6.1.0",
+		"@prisma/adapter-pg": "^6.2.0",
+		"@prisma/client": "^6.2.0",
 		"adminjs": "^7.8.13",
 		"connect-pg-simple": "^10.0.0",
+		"dotenv": "^16.4.7",
 		"express": "^4.21.2",
 		"express-formidable": "^1.2.0",
 		"express-session": "^1.18.1",
+		"pg": "^8.13.1",
+		"prisma": "^6.2.0",
 		"puppeteer": "^23.11.1",
 		"tslib": "^2.8.1"
 	},
@@ -25,7 +29,6 @@
 		"@types/express": "^5.0.0",
 		"@types/express-session": "^1.18.1",
 		"@types/node": "^22.10.5",
-		"prisma": "^6.1.0",
 		"tsx": "^4.19.2",
 		"typescript": "^5.7.2"
 	}

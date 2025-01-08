@@ -1,4 +1,4 @@
-import { BookListType, getNovelLists } from "../lib/scrapers/lists.js";
+import { BookListType, getNovelLists } from "../../lib/scrapers/lists.js";
 import { Router } from "express";
 
 const listsRouter = Router();

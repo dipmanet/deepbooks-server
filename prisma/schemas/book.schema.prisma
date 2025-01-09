@@ -1,0 +1,18 @@
+model Book {
+  id          Int       @id @default(autoincrement())
+  title       String
+  author      String
+  genre       String
+  publishedAt DateTime
+  favoriteBooks FavoriteBook[]
+}
+
+model FavoriteBook {
+  id     Int   @id @default(autoincrement())
+  userId Int
+  bookId Int
+  user   User  @relation(fields: [userId], references: [id])
+  book   Book  @relation(fields: [bookId], references: [id])
+
+  @@unique([userId, bookId]) // Ensure a user can't save the same book multiple times
+}

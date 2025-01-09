@@ -3,27 +3,11 @@ import AdminJS from "adminjs";
 import Connect from "connect-pg-simple";
 import session from "express-session";
 import AdminJSExpress from "@adminjs/express";
-import { Database, Resource, getModelByName } from "@adminjs/prisma";
-import prisma from "./prisma/client.js";
+import { Database, Resource } from "@adminjs/prisma";
+import { adminOptions } from "./config/admin_config.js";
 
 AdminJS.registerAdapter({ Database, Resource });
 
-const adminOptions = {
-	resources: [
-		{
-			resource: { model: getModelByName("User"), client: prisma },
-			options: {},
-		},
-		{
-			resource: { model: getModelByName("Profile"), client: prisma },
-			options: {},
-		},
-		{
-			resource: { model: getModelByName("Book"), client: prisma },
-			options: {},
-		},
-	],
-};
 const adminJs = new AdminJS(adminOptions);
 
 const ConnectSession = Connect(session);

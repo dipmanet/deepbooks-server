@@ -1,5 +1,5 @@
 import { Router } from "express";
-import bookRouter from "./books/index.js";
+import booksRouter from "./books/index.js";
 import authRouter from "./auth/index.js";
 const routers = Router();
 
@@ -8,6 +8,6 @@ routers.get("/test", (req, res) => {
 });
 
 routers.use("/auth", authRouter);
-routers.use("/books", bookRouter);
+routers.use("/books", booksRouter);
 
 export default routers;

@@ -9,15 +9,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 import { Router } from "express";
 import { getNovelLists } from "../../lib/scrapers/lists.js";
-const listsRouter = Router();
-listsRouter.get("/", (req, res) => {
-    res.json("Specify name of the list");
-});
-listsRouter.get("/:list_type", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { list_type } = req.params;
+const genresRouter = Router();
+genresRouter.get("/genres", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const list_type = "";
     try {
-        const list_types = ["latest-release-novel", "hot-novel", "completed-novel", "most-popular"];
-        if (list_types.includes(list_type)) {
+        if (list_type) {
             const content = yield getNovelLists(list_type); // Use the getList function
             res.json(content);
         }
@@ -26,8 +22,8 @@ listsRouter.get("/:list_type", (req, res) => __awaiter(void 0, void 0, void 0, f
         }
     }
     catch (error) {
-        res.status(500).json({ error });
+        res.status(500).json({ message: "Backend error" });
     }
 }));
-export default listsRouter;
+export default genresRouter;
 //# sourceMappingURL=genres.js.map
